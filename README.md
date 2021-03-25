@@ -69,9 +69,40 @@ not straightforward.
 
 Running Node
 ------------
+You would need atkeast 4gb memory with 60gb ssd and 2vCPU VPS
+
+On your Ubuntu cli type
 <code>
 sudo apt-get update 
+</code>
+<code>
 sudo apt-get install build-essential
+ </code>
+ <code>
 sudo apt-get install autoconf libtool pkg-config libboost-all-dev libssl-dev libprotobuf-dev protobuf-compiler libevent-dev libqt4-dev libcanberra-gtk-module libdb++-dev  
 </code>
+
+Then 
+cd /opt/
+
+wget https://github.com/bitranium/bitranium/releases/download/1.0.0/linux-binaries.zip
+unzip linux-binaries
+mv linux-binaries bitranium
+cd bitranium
+./bitraniumd
+
+This will create a new directory in /root/.bitranium/
+
+You can stop bitraniumd and create a new bitranium.conf in /root/.bitranium/
+
+Something like this
+
+rpcuser=rpcUsername
+rpcpassword=passwordhere
+rpcport=3118
+rpcallowip=127.0.0.1
+daemon=1
+addresstype=legacy
+
+Your Bitranium will be running and RPC will be open on port 3118
 # bitranium

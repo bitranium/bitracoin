@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/Decentra-Network/Decentra-Network">
+  <a href="https://github.com/bitranium/bitracoin">
     <img src="https://user-images.githubusercontent.com/41792982/115087853-b1bdc400-9f17-11eb-8ab2-322d06e6ecc8.png" alt="Logo" width="594" height="123">
   </a>
 

@@ -1,9 +1,26 @@
-Bitranium Core integration/staging tree
-=====================================
+<p align="center">
+  <a href="https://github.com/Decentra-Network/Decentra-Network">
+    <img src="https://user-images.githubusercontent.com/41792982/115087853-b1bdc400-9f17-11eb-8ab2-322d06e6ecc8.png" alt="Logo" width="594" height="123">
+  </a>
 
-[![Build Status](https://travis-ci.org/bitranium-project/bitranium.svg?branch=master)](https://travis-ci.org/bitranium-project/bitranium)
+  <h3 align="center">Bitranium Core integration/staging tree!
+</h3>
 
-https://bitranium.com
+  <p align="center">
+Bitranium is an experimental digital currency that enables instant payments to
+anyone, anywhere in the world.
+    <br />
+    <a href="https://bitranium.com"><strong>Bitranium.com</strong></a>
+    <br />
+    <br />
+  <a href="https://travis-ci.org/bitranium-project/bitranium">
+  <img src="https://travis-ci.org/bitranium-project/bitranium.svg?branch=master" alt="Build Status">
+    </a>
+
+  
+  </p>
+</p>
+
 
 What is Bitranium?
 ----------------
@@ -118,5 +135,3 @@ daemon=1
 addresstype=legacy
 
 Your Bitranium will be running and RPC will be open on port 3118
-
-# bitranium

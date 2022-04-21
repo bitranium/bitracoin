@@ -1,14 +1,12 @@
 *.tar.gz
 
 *.exe
-src/bitranium
-src/bitraniumd
-src/bitranium-cli
-src/bitranium-tx
-src/bitranium-wallet
-src/test/test_bitranium
-src/test/test_bitranium_fuzzy
-src/qt/test/test_bitranium-qt
+src/bitracoin
+src/bitracoind
+src/bitracoin-cli
+src/bitracoin-tx
+src/test/test_bitracoin
+src/qt/test/test_bitracoin-qt
 
 # autoreconf
 Makefile.in
@@ -27,6 +25,7 @@ build-aux/m4/ltversion.m4
 build-aux/missing
 build-aux/compile
 build-aux/test-driver
+config.cache
 config.log
 config.status
 configure
@@ -34,6 +33,7 @@ libtool
 src/config/bitcoin-config.h
 src/config/bitcoin-config.h.in
 src/config/stamp-h1
+src/obj
 share/setup.nsi
 share/qt/Info.plist
 
@@ -45,16 +45,15 @@ src/qt/forms/ui_*.h
 
 src/qt/test/moc*.cpp
 
-src/qt/bitcoin-qt.config
-src/qt/bitcoin-qt.creator
-src/qt/bitcoin-qt.creator.user
-src/qt/bitcoin-qt.files
-src/qt/bitcoin-qt.includes
+src/qt/bitracoin-qt.config
+src/qt/bitracoin-qt.creator
+src/qt/bitracoin-qt.creator.user
+src/qt/bitracoin-qt.files
+src/qt/bitracoin-qt.includes
 
 .deps
 .dirstamp
 .libs
-.vscode
 .*.swp
 *.*~*
 *.bak
@@ -63,7 +62,6 @@ src/qt/bitcoin-qt.includes
 *.pyc
 *.o
 *.o-*
-*.patch
 *.a
 *.pb.cc
 *.pb.h
@@ -76,6 +74,10 @@ src/qt/bitcoin-qt.includes
 *.json.h
 *.raw.h
 
+# Only ignore unexpected patches
+*.patch
+!depends/patches/**/*.patch
+
 #libtool object files
 *.lo
 *.la
@@ -83,25 +85,34 @@ src/qt/bitcoin-qt.includes
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-bitranium-qt
-bitranium-Qt.app
+!depends/Makefile
+src/qt/bitracoin-qt
+Bitracoin-Qt.app
 background.tiff*
+
+# Qt Creator
+Makefile.am.user
 
 # Unit-tests
 Makefile.test
-bitranium-qt_test
+bitracoin-qt_test
+src/test/buildenv.py
 
 # Resources cpp
 qrc_*.cpp
+
 # Mac specific
 .DS_Store
 build
+
+# Previous releases
+releases
 
 #lcov
 *.gcno
 *.gcda
 /*.info
-test_bitranium.coverage/
+test_bitcoin.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -111,6 +122,8 @@ linux-build
 win32-build
 test/config.ini
 test/cache/*
+qa/pull-tester/run-bitcoind-for-test.sh
+qa/pull-tester/tests_config.py
 
 !src/leveldb*/Makefile
 
@@ -119,8 +132,13 @@ test/cache/*
 libbitcoinconsensus.pc
 contrib/devtools/split-debug.sh
 
-# Output from running db4 installation
-db4/
+#Visual Studio
+.vscode/*
+.vs/*
 
 # clang-check
 *.plist
+
+osx_volname
+dist/
+*.background.tiff

@@ -69,54 +69,73 @@ not straightforward.
 
 Running Node
 ------------
-You would need atkeast 4gb memory with 60gb ssd and 2vCPU VPS
+Install a node for your coin on Ubuntu Server 18.04 with the following tutorial.
 
-On your Ubuntu cli type
+Update your Ubuntu server with the following command:
 
-<code>
-sudo apt-get update 
-</code>
+sudo apt-get update && sudo apt-get upgrade -y
 
-<code>
-sudo apt-get install build-essential
- </code>
+Install the required dependencies with the following command:
 
-<code>
-sudo apt-get install autoconf libtool pkg-config libboost-all-dev libssl-dev libprotobuf-dev protobuf-compiler libevent-dev libqt4-dev libcanberra-gtk-module libdb++-dev  
-</code>
+sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3 libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libboost-all-dev libboost-program-options-dev libminiupnpc-dev libzmq3-dev libprotobuf-dev protobuf-compiler unzip software-properties-common cmake -y
 
-Then 
+Install the repository ppa:bitcoin/bitcoin with the following command:
 
-cd /opt/
+sudo add-apt-repository ppa:bitcoin/bitcoin
 
-wget https://github.com/bitranium/bitranium/releases/download/1.0.0/linux-binaries.zip
+Confirm the installation of the repository by pressing on the enter key. enter
 
-unzip linux-binaries
+Install Berkeley DB with the following command:
 
-mv linux-binaries bitranium
+sudo apt-get update && sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 
-cd bitranium
+Download the Linux daemon for your wallet with the following command:
 
-./bitraniumd
+Download : https://bitranium.com/download/bitracoin-deamon-linux.tar.gz
 
-This will create a new directory in /root/.bitranium/
+Extract the tar file with the following command:
 
-You can stop bitraniumd and create a new bitranium.conf in /root/.bitranium/
+tar -xzvf bitracoin-daemon-linux.tar.gz
 
-Something like this
+Download the Linux tools for your wallet with the following command:
 
-rpcuser=rpcUsername
+Download: https://bitranium.com/download/bitracoin-qt-linux.tar.gz
 
-rpcpassword=passwordhere
+Extract the tar file with the following command:
 
-rpcport=3118
+tar -xzvf bitracoin-qt-linux.tar.gz
 
+Type the following command to install the daemon and tools for your wallet:
+
+sudo mv bitracoind bitracoin-cli bitracoin-tx /usr/bin/
+
+Create the data directory for your coin with the following command:
+
+mkdir $HOME/.bitracoin
+
+Open nano.
+
+nano $HOME/.bitracoin/bitracoin.conf -t
+
+Paste the following into nano.
+
+rpcuser=rpc_bitracoin
+rpcpassword=dR2oBQ3K1zYMZQtJFZeAerhWxaJ5Lqeq9J3
 rpcallowip=127.0.0.1
-
+listen=1
+server=1
+txindex=1
 daemon=1
+addnode=45.141.151.10
+addnode=45.141.151.11
+addnode=45.141.151.12
+addnode=45.141.151.13
+addnode=45.141.151.14
+addnode=45.141.151.15
+addnode=45.141.151.19
 
-addresstype=legacy
+Save the file with the keyboard shortcut ctrl + x.
 
-Your Bitranium will be running and RPC will be open on port 3118
+Type the following command to start your node:
 
-# bitranium
+bitracoind
